@@ -3,16 +3,17 @@ import demoPlugin from './plugins/demoPlugin.js'
 import path from 'path'
 
 export default {
-  base: '/',
-  title: '组件库文档',
+  base: '/taroH5Preview/',
+  outDir: '../../dist',
+  title: 'Taro自定义组件库文档',
   description: '自定义组件库文档',
   markdown: {
-    config: (md) => md.use(demoPlugin),
+    config: (md) => md.use(demoPlugin)
   },
   themeConfig: {
     nav: getNav(),
     sidebar: getSidebar(),
-    socialLinks: [{ icon: 'github', link: 'https://github.com' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com' }]
   },
   vite: {
     define: {
@@ -25,20 +26,20 @@ export default {
       ENABLE_CONTAINS: true,
       ENABLE_SIZE_APIS: true,
       ENABLE_TEMPLATE_CONTENT: true,
-      ENABLE_MUTATION_OBSERVER: true,
+      ENABLE_MUTATION_OBSERVER: true
     },
     resolve: {
       alias: {
-        '/src': path.resolve(__dirname, '../../src'),
-      },
+        '/src': path.resolve(__dirname, '../../src')
+      }
     },
     server: {
       fs: {
-        allow: ['../..'],
-      },
+        allow: ['../..']
+      }
     },
     build: {
-      assetsDir: 'assets',
-    },
-  },
+      assetsDir: 'assets'
+    }
+  }
 }

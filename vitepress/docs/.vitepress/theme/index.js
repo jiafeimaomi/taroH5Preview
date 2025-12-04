@@ -2,7 +2,6 @@ import DefaultTheme from 'vitepress/theme'
 import { h } from 'vue'
 import DemoPreview from './components/DemoPreview.vue'
 import PreviewIframe from './components/PreviewIframe.vue'
-import '@tarojs/components/dist/taro-components/taro-components.css'
 import './custom.css'
 
 // 获取第一个组件路径
@@ -53,5 +52,11 @@ export default {
   enhanceApp({ app }) {
     app.component('DemoPreview', DemoPreview)
     app.component('PreviewIframe', PreviewIframe)
-  },
+    // 动态导入 taro 组件 CSS，仅在客户端加载
+    if (typeof window !== 'undefined') {
+      import(
+        '@tarojs/components/dist/taro-components/taro-components.css'
+      ).catch(() => console.warn('Failed to load taro components CSS'))
+    }
+  }
 }

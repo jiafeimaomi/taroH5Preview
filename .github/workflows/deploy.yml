@@ -1,0 +1,39 @@
+name: Deploy Taro VitePress + H5 Preview
+on:
+  push:
+    branches: [main] # 监听 main 分支推送
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: './vitepress/package-lock.json'
+
+      - name: 安装 VitePress 依赖
+        run: cd vitepress && npm install
+
+      - name: 构建 VitePress 静态站
+        run: cd vitepress && npm run docs:build
+
+      - name: 整合部署资源（VitePress + Taro H5）
+        run: |
+          # 创建最终部署目录
+          mkdir -p ./deploy
+          # 复制 VitePress 构建产物到部署目录
+          cp -r ./dist-vitepress/* ./deploy/
+          # 复制 Taro H5 预览页到部署目录（保留 taro-h5-preview 目录名）
+          cp -r ./taro-h5-preview ./deploy/
+
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy # 最终部署目录（包含 VitePress 和 H5 预览页）
+          publish_branch: gh-pages # 部署到 gh-pages 分支

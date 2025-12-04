@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
+    "@tarojs/components": "^3.6.0",
     "@vitejs/plugin-vue": "^6.0.2",
     "markdown-it-container": "^4.0.0"
   }
