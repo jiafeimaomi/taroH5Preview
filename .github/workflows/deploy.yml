@@ -20,15 +20,15 @@ jobs:
         run: cd vitepress && npm install
 
       - name: 构建 VitePress 静态站
-        run: cd vitepress && npm run docs:build
+        run: cd vitepress && npm run build
 
       - name: 整合部署资源（VitePress + Taro H5）
         run: |
           # 创建最终部署目录
           mkdir -p ./deploy
-          # 复制 VitePress 构建产物到部署目录
-          cp -r ./dist-vitepress/* ./deploy/
-          # 复制 Taro H5 预览页到部署目录（保留 taro-h5-preview 目录名）
+          # 复制 VitePress 构建产物到部署目录根路径
+          cp -r ./dist/* ./deploy/
+          # 复制 Taro H5 预览页到 deploy 目录下的 taro-h5-preview 目录
           cp -r ./taro-h5-preview ./deploy/
 
       - name: 部署到 GitHub Pages
