@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "buildTime": "2025-12-04T06:14:53.267Z",
+  "components": [
+    {
+      "name": "PdButton",
+      "path": "/components/PdCore/PdButton"
+    },
+    {
+      "name": "PdCheckbox",
+      "path": "/components/PdCore/PdCheckbox"
+    },
+    {
+      "name": "PdCheckboxGroup",
+      "path": "/components/PdCore/PdCheckboxGroup"
+    },
+    {
+      "name": "PdInput",
+      "path": "/components/PdCore/PdInput"
+    },
+    {
+      "name": "PdRadio",
+      "path": "/components/PdCore/PdRadio"
+    },
+    {
+      "name": "PdRadioGroup",
+      "path": "/components/PdCore/PdRadioGroup"
+    },
+    {
+      "name": "PdText",
+      "path": "/components/PdCore/PdText"
+    },
+    {
+      "name": "PdView",
+      "path": "/components/PdCore/PdView"
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "previewed": 8,
+    "coverage": "100%"
+  }
+}
